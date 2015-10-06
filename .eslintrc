@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+
+  "parser": "babel-eslint",
+
+  "ecmaFeatures": {
+    "modules": true
+  },
+
+  "globals": {
+    "assert": false
+  }
+}
