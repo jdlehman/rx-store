@@ -1,3 +1,7 @@
+[![npm version](https://badge.fury.io/js/rx-store.svg)](http://badge.fury.io/js/rx-store)
+[![Build Status](https://secure.travis-ci.org/jdlehman/rx-store.svg?branch=master)](http://travis-ci.org/jdlehman/rx-store)
+[![Dependency Status](https://david-dm.org/jdlehman/rx-store.svg)](https://david-dm.org/jdlehman/rx-store)
+
 # rx-store
 
 `rx-store` is a reactive solution for managing state. It is framework and view agnostic, though it can be used as the basis for a Flux pattern.
