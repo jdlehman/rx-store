@@ -84,7 +84,7 @@ var addTwo$ = Rx.Observable.fromEvent(btnNode, 'click').map(e => {
 });
 
 // send each new action to the store
-event$.subscribe(function(action) {
+addTwo$.subscribe(function(action) {
   store.dispatch(action);
 });
 ```
