@@ -6,7 +6,14 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "lint": "./node_modules/.bin/eslint src/** test/**",
-    "test": "mocha --compilers js:babel/register --recursive"
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdlehman/rx-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jdlehman/rx-store/issues"
   },
   "keywords": [
     "state",
