@@ -17,13 +17,13 @@
 #### ES6
 
 ```js
-import {createStore} from 'rx-store';
+import {createRxStore} from 'rx-store';
 ```
 
 #### ES5 with modules
 
 ```js
-var createStore = require('rx-store').createStore;
+var createRxStore = require('rx-store').createRxStore;
 ```
 
 #### ES5
