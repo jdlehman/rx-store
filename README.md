@@ -140,7 +140,7 @@ store.subscribe(function(data) {
 ```js
 class MyComponent extends React.Component {
   componentDidMount() {
-    this.countSubscription = this.props.countStream.subscribe(function(count) {
+    this.countSubscription = this.props.countStream.subscribe((count) => {
       this.setState({count: count});
     });
   }
