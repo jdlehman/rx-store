@@ -39,7 +39,7 @@ var createRxStore = require('rx-store').createRxStore;
 
 ```js
 function sum(previousState, nextState) {
-  return previousState + newState;
+  return previousState + nextState;
 }
 var initialState = 0;
 var store = createRxStore(sum, initialState);
