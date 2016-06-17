@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import sinon from 'sinon';
 import {createRxStore} from '../src';
-import Rx from 'rx';
+import {Subject, Observable} from 'rxjs';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -37,14 +37,14 @@ describe('createRxStore', () => {
   });
 
   describe('action$', () => {
-    it('it is an Rx Subject', () => {
-      assert(store.action$ instanceof Rx.Subject);
+    it('it is an Rxjs Subject', () => {
+      assert(store.action$ instanceof Subject);
     });
   });
 
   describe('state$', () => {
-    it('is an Rx Observable', () => {
-      assert(store.state$ instanceof Rx.Observable);
+    it('is an Rxjs Observable', () => {
+      assert(store.state$ instanceof Observable);
     });
 
     it('starts with the initialState', (done) => {
@@ -57,7 +57,7 @@ describe('createRxStore', () => {
 
   describe('dispatch', () => {
     it('passes data onto the action$ Subject', () => {
-      var action$Spy = sinon.stub(store.action$, 'onNext');
+      var action$Spy = sinon.stub(store.action$, 'next');
       store.dispatch({data: 2});
       sinon.assert.calledWith(action$Spy, {data: 2});
       action$Spy.restore();

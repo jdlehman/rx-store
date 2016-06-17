@@ -1,4 +1,4 @@
-import {Subject} from 'rx';
+import {Subject} from 'rxjs/Subject';
 
 export function createRxStore(reducer, initialState) {
   var action$ = new Subject();
@@ -6,7 +6,7 @@ export function createRxStore(reducer, initialState) {
   return {
     action$,
     state$,
-    dispatch: action => action$.onNext(action),
+    dispatch: action => action$.next(action),
     subscribe: (...args) => state$.subscribe(...args)
   };
 }
