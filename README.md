@@ -67,7 +67,7 @@ store.dispatch(action);
 
 // which is equivalent to
 
-store.action$.onNext(action);
+store.action$.next(action);
 
 store.subscribe(function(state) {
   console.log('State: ' + state);
@@ -146,7 +146,7 @@ class MyComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    this.countSubscription.dispose();
+    this.countSubscription.unsubscribe();
   }
 
   render() {
