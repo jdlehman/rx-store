@@ -1,4 +1,6 @@
 import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/scan';
 
 export function createRxStore(reducer, initialState) {
   var action$ = new Subject();
