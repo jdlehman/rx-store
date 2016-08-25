@@ -29,8 +29,8 @@ var createRxStore = require('rx-store').createRxStore;
 #### ES5
 
 ```html
-<script src="node_modules/rx-store/dist/rx-store.min.js"></script>
-// window['rx-store'].createRxStore
+<script src="node_modules/rx-store/dist/rx-store.browser.min.js"></script>
+// window.RxStore.createRxStore
 ```
 
 ### Create a store
