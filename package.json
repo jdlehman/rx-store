@@ -2,11 +2,17 @@
   "name": "rx-store",
   "version": "0.3.0",
   "description": "Reactive library for managing state",
-  "main": "dist/rx-store.min.js",
+  "main": "dist/rx-store.umd.min.js",
+  "jsnext:main": "dist/rx-store.es-modules.js",
+  "module": "dist/rx-store.es-modules.js",
   "scripts": {
-    "build": "$(npm bin)/webpack",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && $(npm bin)/rollup -c && npm run minify",
+    "minify": "npm run minify-browser && npm run minify-umd",
+    "minify-browser": "$(npm bin)/uglifyjs dist/rx-store.browser.js -cm > dist/rx-store.browser.min.js",
+    "minify-umd": "$(npm bin)/uglifyjs dist/rx-store.umd.js -cm > dist/rx-store.umd.min.js",
     "lint": "$(npm bin)/eslint src/**/*.js test/**/*.js",
-    "test": "$(npm bin)/mocha --compilers js:babel-core/register --recursive"
+    "test": "$(npm bin)/mocha --compilers js:babel-register --recursive"
   },
   "repository": {
     "type": "git",
@@ -26,18 +32,23 @@
   "author": "Jonathan Lehman <jonathan.lehman91@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.9.1",
-    "babel-eslint": "^6.0.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-2": "^6.5.0",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "babel-register": "^6.14.0",
     "chai": "^3.5.0",
-    "eslint": "^2.10.3",
-    "mocha": "^2.5.3",
-    "sinon": "^1.17.4",
-    "webpack": "^1.13.1"
+    "eslint": "^3.3.1",
+    "mocha": "^3.0.2",
+    "rollup": "^0.34.10",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.3.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "sinon": "^1.17.5",
+    "uglify-js": "^2.7.3"
   },
   "dependencies": {
-    "rxjs": "5.0.0-beta.9"
+    "rxjs": "^5.0.0-beta.11"
   }
 }

@@ -1,7 +1,6 @@
 import {assert} from 'chai';
 import sinon from 'sinon';
-import {createRxStore} from '../src';
-import {Subject, Observable} from 'rxjs';
+import {createRxStore} from '../dist/rx-store.umd';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -36,17 +35,7 @@ describe('createRxStore', () => {
     store = null;
   });
 
-  describe('action$', () => {
-    it('it is an Rxjs Subject', () => {
-      assert(store.action$ instanceof Subject);
-    });
-  });
-
   describe('state$', () => {
-    it('is an Rxjs Observable', () => {
-      assert(store.state$ instanceof Observable);
-    });
-
     it('starts with the initialState', (done) => {
       store.state$.subscribe(data => {
         assert.deepEqual(data, initialState);
