@@ -12,7 +12,7 @@
     "minify-browser": "$(npm bin)/uglifyjs dist/rx-store.browser.js -cm > dist/rx-store.browser.min.js",
     "minify-umd": "$(npm bin)/uglifyjs dist/rx-store.umd.js -cm > dist/rx-store.umd.min.js",
     "lint": "$(npm bin)/eslint src/**/*.js test/**/*.js",
-    "test": "$(npm bin)/mocha --compilers js:babel-register --recursive"
+    "test": "$(npm bin)/mocha"
   },
   "repository": {
     "type": "git",

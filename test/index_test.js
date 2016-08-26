@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import sinon from 'sinon';
-import {createRxStore} from '../dist/rx-store.umd';
+import {createRxStore} from '../src';
 
 function reducer(state, action) {
   switch (action.type) {
