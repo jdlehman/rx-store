@@ -62,12 +62,14 @@ store.state$.subscribe(function(state) {
 ### Modify State
 
 ```js
-var action = 4;
-store.dispatch(action);
-
 store.subscribe(function(state) {
   console.log('State: ' + state);
 });
+
+var action = 4;
+store.dispatch(action);
+
+// logs:
 // State: 0
 // State: 4
 ```
@@ -110,14 +112,15 @@ function add(data) {
   };
 }
 
+store.subscribe(function(data) {
+  console.log(data);
+});
+
 var addAction = add(4);
 var addAction2 = add(-1);
 store.dispatch(addAction);
 store.dispatch(addAction2);
-
-store.subscribe(function(data) {
-  console.log(data);
-});
+// logs:
 // {count: 0, somethingElse: 'data'}
 // {count: 4, somethingElse: 'data');
 // {count: 3, somethingElse: 'data');
