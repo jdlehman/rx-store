@@ -1,6 +1,6 @@
 {
   "name": "rx-store",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Reactive library for managing state",
   "main": "dist/rx-store.umd.min.js",
   "jsnext:main": "dist/rx-store.es-modules.js",
