@@ -1,14 +1,10 @@
-import {Subject} from 'rxjs/Subject';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/scan';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 export function createRxStore(reducer, initialState) {
-  var action$ = new Subject();
-  var state$ = action$.startWith(initialState).scan(reducer);
+  const state$ = new BehaviorSubject(initialState);
   return {
-    action$,
     state$,
-    dispatch: action => action$.next(action),
+    dispatch: action => state$.next(reducer(state$.value, action)),
     subscribe: (...args) => state$.subscribe(...args)
   };
 }

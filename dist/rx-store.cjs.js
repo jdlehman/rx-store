@@ -73,14 +73,14 @@ var get$1 = function get$1(object, property, receiver) {
 
 
 
-var set$1 = function set$1(object, property, value, receiver) {
+var set = function set(object, property, value, receiver) {
   var desc = Object.getOwnPropertyDescriptor(object, property);
 
   if (desc === undefined) {
     var parent = Object.getPrototypeOf(object);
 
     if (parent !== null) {
-      set$1(parent, property, value, receiver);
+      set(parent, property, value, receiver);
     }
   } else if ("value" in desc && desc.writable) {
     desc.value = value;
@@ -164,7 +164,7 @@ var tryCatch_1$1 = {
     tryCatch: tryCatch_2
 };
 
-var __extends$2 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var __extends$3 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -177,7 +177,7 @@ var __extends$2 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) 
  * `unsubscribe` of a {@link Subscription}.
  */
 var UnsubscriptionError = function (_super) {
-    __extends$2(UnsubscriptionError, _super);
+    __extends$3(UnsubscriptionError, _super);
     function UnsubscriptionError(errors) {
         _super.call(this);
         this.errors = errors;
@@ -372,7 +372,7 @@ var rxSubscriber = {
   $$rxSubscriber: $$rxSubscriber
 };
 
-var __extends$1 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var __extends$2 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -395,7 +395,7 @@ var rxSubscriber_1$2 = rxSubscriber;
  * @class Subscriber<T>
  */
 var Subscriber = function (_super) {
-    __extends$1(Subscriber, _super);
+    __extends$2(Subscriber, _super);
     /**
      * @param {Observer|function(value: T): void} [destinationOrNext] A partially
      * defined Observer or a `next` callback function.
@@ -518,7 +518,7 @@ var Subscriber_2 = Subscriber;
  * @extends {Ignored}
  */
 var SafeSubscriber = function (_super) {
-    __extends$1(SafeSubscriber, _super);
+    __extends$2(SafeSubscriber, _super);
     function SafeSubscriber(_parent, observerOrNext, error, complete) {
         _super.call(this);
         this._parent = _parent;
@@ -794,7 +794,7 @@ var Observable_1$1 = {
     Observable: Observable_2
 };
 
-var __extends$3 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var __extends$4 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -812,7 +812,7 @@ var __extends$3 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) 
  * @class ObjectUnsubscribedError
  */
 var ObjectUnsubscribedError = function (_super) {
-    __extends$3(ObjectUnsubscribedError, _super);
+    __extends$4(ObjectUnsubscribedError, _super);
     function ObjectUnsubscribedError() {
         var err = _super.call(this, 'object unsubscribed');
         this.name = err.name = 'ObjectUnsubscribedError';
@@ -823,11 +823,11 @@ var ObjectUnsubscribedError = function (_super) {
 }(Error);
 var ObjectUnsubscribedError_2 = ObjectUnsubscribedError;
 
-var ObjectUnsubscribedError_1$1 = {
+var ObjectUnsubscribedError_1$2 = {
     ObjectUnsubscribedError: ObjectUnsubscribedError_2
 };
 
-var __extends$4 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var __extends$5 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -842,7 +842,7 @@ var Subscription_1$4 = Subscription_1$2;
  * @extends {Ignored}
  */
 var SubjectSubscription = function (_super) {
-    __extends$4(SubjectSubscription, _super);
+    __extends$5(SubjectSubscription, _super);
     function SubjectSubscription(subject, subscriber) {
         _super.call(this);
         this.subject = subject;
@@ -873,7 +873,7 @@ var SubjectSubscription_1$1 = {
     SubjectSubscription: SubjectSubscription_2
 };
 
-var __extends = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var __extends$1 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -884,25 +884,26 @@ var __extends = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
 var Observable_1 = Observable_1$1;
 var Subscriber_1 = Subscriber_1$2;
 var Subscription_1 = Subscription_1$2;
-var ObjectUnsubscribedError_1 = ObjectUnsubscribedError_1$1;
+var ObjectUnsubscribedError_1$1 = ObjectUnsubscribedError_1$2;
 var SubjectSubscription_1 = SubjectSubscription_1$1;
 var rxSubscriber_1 = rxSubscriber;
 /**
  * @class SubjectSubscriber<T>
  */
 var SubjectSubscriber = function (_super) {
-    __extends(SubjectSubscriber, _super);
+    __extends$1(SubjectSubscriber, _super);
     function SubjectSubscriber(destination) {
         _super.call(this, destination);
         this.destination = destination;
     }
     return SubjectSubscriber;
 }(Subscriber_1.Subscriber);
+var SubjectSubscriber_1 = SubjectSubscriber;
 /**
  * @class Subject<T>
  */
 var Subject = function (_super) {
-    __extends(Subject, _super);
+    __extends$1(Subject, _super);
     function Subject() {
         _super.call(this);
         this.observers = [];
@@ -921,7 +922,7 @@ var Subject = function (_super) {
     };
     Subject.prototype.next = function (value) {
         if (this.closed) {
-            throw new ObjectUnsubscribedError_1.ObjectUnsubscribedError();
+            throw new ObjectUnsubscribedError_1$1.ObjectUnsubscribedError();
         }
         if (!this.isStopped) {
             var observers = this.observers;
@@ -934,7 +935,7 @@ var Subject = function (_super) {
     };
     Subject.prototype.error = function (err) {
         if (this.closed) {
-            throw new ObjectUnsubscribedError_1.ObjectUnsubscribedError();
+            throw new ObjectUnsubscribedError_1$1.ObjectUnsubscribedError();
         }
         this.hasError = true;
         this.thrownError = err;
@@ -949,7 +950,7 @@ var Subject = function (_super) {
     };
     Subject.prototype.complete = function () {
         if (this.closed) {
-            throw new ObjectUnsubscribedError_1.ObjectUnsubscribedError();
+            throw new ObjectUnsubscribedError_1$1.ObjectUnsubscribedError();
         }
         this.isStopped = true;
         var observers = this.observers;
@@ -967,7 +968,7 @@ var Subject = function (_super) {
     };
     Subject.prototype._subscribe = function (subscriber) {
         if (this.closed) {
-            throw new ObjectUnsubscribedError_1.ObjectUnsubscribedError();
+            throw new ObjectUnsubscribedError_1$1.ObjectUnsubscribedError();
         } else if (this.hasError) {
             subscriber.error(this.thrownError);
             return Subscription_1.Subscription.EMPTY;
@@ -994,7 +995,7 @@ var Subject_2 = Subject;
  * @class AnonymousSubject<T>
  */
 var AnonymousSubject = function (_super) {
-    __extends(AnonymousSubject, _super);
+    __extends$1(AnonymousSubject, _super);
     function AnonymousSubject(destination, source) {
         _super.call(this);
         this.destination = destination;
@@ -1028,8 +1029,15 @@ var AnonymousSubject = function (_super) {
     };
     return AnonymousSubject;
 }(Subject);
+var AnonymousSubject_1 = AnonymousSubject;
 
-var __extends$6 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
+var Subject_1$1 = {
+    SubjectSubscriber: SubjectSubscriber_1,
+    Subject: Subject_2,
+    AnonymousSubject: AnonymousSubject_1
+};
+
+var __extends = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
     for (var p in b) {
         if (b.hasOwnProperty(p)) d[p] = b[p];
     }function __() {
@@ -1037,899 +1045,53 @@ var __extends$6 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) 
     }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1$5 = Observable_1$1;
+var Subject_1 = Subject_1$1;
+var ObjectUnsubscribedError_1 = ObjectUnsubscribedError_1$2;
 /**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
+ * @class BehaviorSubject<T>
  */
-var ScalarObservable = function (_super) {
-    __extends$6(ScalarObservable, _super);
-    function ScalarObservable(value, scheduler) {
+var BehaviorSubject = function (_super) {
+    __extends(BehaviorSubject, _super);
+    function BehaviorSubject(_value) {
         _super.call(this);
-        this.value = value;
-        this.scheduler = scheduler;
-        this._isScalar = true;
-        if (scheduler) {
-            this._isScalar = false;
-        }
+        this._value = _value;
     }
-    ScalarObservable.create = function (value, scheduler) {
-        return new ScalarObservable(value, scheduler);
-    };
-    ScalarObservable.dispatch = function (state) {
-        var done = state.done,
-            value = state.value,
-            subscriber = state.subscriber;
-        if (done) {
-            subscriber.complete();
-            return;
-        }
-        subscriber.next(value);
-        if (subscriber.closed) {
-            return;
-        }
-        state.done = true;
-        this.schedule(state);
-    };
-    ScalarObservable.prototype._subscribe = function (subscriber) {
-        var value = this.value;
-        var scheduler = this.scheduler;
-        if (scheduler) {
-            return scheduler.schedule(ScalarObservable.dispatch, 0, {
-                done: false, value: value, subscriber: subscriber
-            });
-        } else {
-            subscriber.next(value);
-            if (!subscriber.closed) {
-                subscriber.complete();
-            }
-        }
-    };
-    return ScalarObservable;
-}(Observable_1$5.Observable);
-var ScalarObservable_2 = ScalarObservable;
-
-var ScalarObservable_1$2 = {
-    ScalarObservable: ScalarObservable_2
-};
-
-var __extends$7 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Observable_1$6 = Observable_1$1;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
-var EmptyObservable = function (_super) {
-    __extends$7(EmptyObservable, _super);
-    function EmptyObservable(scheduler) {
-        _super.call(this);
-        this.scheduler = scheduler;
-    }
-    /**
-     * Creates an Observable that emits no items to the Observer and immediately
-     * emits a complete notification.
-     *
-     * <span class="informal">Just emits 'complete', and nothing else.
-     * </span>
-     *
-     * <img src="./img/empty.png" width="100%">
-     *
-     * This static operator is useful for creating a simple Observable that only
-     * emits the complete notification. It can be used for composing with other
-     * Observables, such as in a {@link mergeMap}.
-     *
-     * @example <caption>Emit the number 7, then complete.</caption>
-     * var result = Rx.Observable.empty().startWith(7);
-     * result.subscribe(x => console.log(x));
-     *
-     * @example <caption>Map and flatten only odd numbers to the sequence 'a', 'b', 'c'</caption>
-     * var interval = Rx.Observable.interval(1000);
-     * var result = interval.mergeMap(x =>
-     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()
-     * );
-     * result.subscribe(x => console.log(x));
-     *
-     * @see {@link create}
-     * @see {@link never}
-     * @see {@link of}
-     * @see {@link throw}
-     *
-     * @param {Scheduler} [scheduler] A {@link Scheduler} to use for scheduling
-     * the emission of the complete notification.
-     * @return {Observable} An "empty" Observable: emits only the complete
-     * notification.
-     * @static true
-     * @name empty
-     * @owner Observable
-     */
-    EmptyObservable.create = function (scheduler) {
-        return new EmptyObservable(scheduler);
-    };
-    EmptyObservable.dispatch = function (arg) {
-        var subscriber = arg.subscriber;
-        subscriber.complete();
-    };
-    EmptyObservable.prototype._subscribe = function (subscriber) {
-        var scheduler = this.scheduler;
-        if (scheduler) {
-            return scheduler.schedule(EmptyObservable.dispatch, 0, { subscriber: subscriber });
-        } else {
-            subscriber.complete();
-        }
-    };
-    return EmptyObservable;
-}(Observable_1$6.Observable);
-var EmptyObservable_2 = EmptyObservable;
-
-var EmptyObservable_1$2 = {
-    EmptyObservable: EmptyObservable_2
-};
-
-function isScheduler(value) {
-  return value && typeof value.schedule === 'function';
-}
-var isScheduler_2 = isScheduler;
-
-var isScheduler_1$2 = {
-  isScheduler: isScheduler_2
-};
-
-var __extends$5 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Observable_1$4 = Observable_1$1;
-var ScalarObservable_1$1 = ScalarObservable_1$2;
-var EmptyObservable_1$1 = EmptyObservable_1$2;
-var isScheduler_1$1 = isScheduler_1$2;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
-var ArrayObservable = function (_super) {
-    __extends$5(ArrayObservable, _super);
-    function ArrayObservable(array, scheduler) {
-        _super.call(this);
-        this.array = array;
-        this.scheduler = scheduler;
-        if (!scheduler && array.length === 1) {
-            this._isScalar = true;
-            this.value = array[0];
-        }
-    }
-    ArrayObservable.create = function (array, scheduler) {
-        return new ArrayObservable(array, scheduler);
-    };
-    /**
-     * Creates an Observable that emits some values you specify as arguments,
-     * immediately one after the other, and then emits a complete notification.
-     *
-     * <span class="informal">Emits the arguments you provide, then completes.
-     * </span>
-     *
-     * <img src="./img/of.png" width="100%">
-     *
-     * This static operator is useful for creating a simple Observable that only
-     * emits the arguments given, and the complete notification thereafter. It can
-     * be used for composing with other Observables, such as with {@link concat}.
-     * By default, it uses a `null` Scheduler, which means the `next`
-     * notifications are sent synchronously, although with a different Scheduler
-     * it is possible to determine when those notifications will be delivered.
-     *
-     * @example <caption>Emit 10, 20, 30, then 'a', 'b', 'c', then start ticking every second.</caption>
-     * var numbers = Rx.Observable.of(10, 20, 30);
-     * var letters = Rx.Observable.of('a', 'b', 'c');
-     * var interval = Rx.Observable.interval(1000);
-     * var result = numbers.concat(letters).concat(interval);
-     * result.subscribe(x => console.log(x));
-     *
-     * @see {@link create}
-     * @see {@link empty}
-     * @see {@link never}
-     * @see {@link throw}
-     *
-     * @param {...T} values Arguments that represent `next` values to be emitted.
-     * @param {Scheduler} [scheduler] A {@link Scheduler} to use for scheduling
-     * the emissions of the `next` notifications.
-     * @return {Observable<T>} An Observable that emits each given input value.
-     * @static true
-     * @name of
-     * @owner Observable
-     */
-    ArrayObservable.of = function () {
-        var array = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            array[_i - 0] = arguments[_i];
-        }
-        var scheduler = array[array.length - 1];
-        if (isScheduler_1$1.isScheduler(scheduler)) {
-            array.pop();
-        } else {
-            scheduler = null;
-        }
-        var len = array.length;
-        if (len > 1) {
-            return new ArrayObservable(array, scheduler);
-        } else if (len === 1) {
-            return new ScalarObservable_1$1.ScalarObservable(array[0], scheduler);
-        } else {
-            return new EmptyObservable_1$1.EmptyObservable(scheduler);
-        }
-    };
-    ArrayObservable.dispatch = function (state) {
-        var array = state.array,
-            index = state.index,
-            count = state.count,
-            subscriber = state.subscriber;
-        if (index >= count) {
-            subscriber.complete();
-            return;
-        }
-        subscriber.next(array[index]);
-        if (subscriber.closed) {
-            return;
-        }
-        state.index = index + 1;
-        this.schedule(state);
-    };
-    ArrayObservable.prototype._subscribe = function (subscriber) {
-        var index = 0;
-        var array = this.array;
-        var count = array.length;
-        var scheduler = this.scheduler;
-        if (scheduler) {
-            return scheduler.schedule(ArrayObservable.dispatch, 0, {
-                array: array, index: index, count: count, subscriber: subscriber
-            });
-        } else {
-            for (var i = 0; i < count && !subscriber.closed; i++) {
-                subscriber.next(array[i]);
-            }
-            subscriber.complete();
-        }
-    };
-    return ArrayObservable;
-}(Observable_1$4.Observable);
-var ArrayObservable_2 = ArrayObservable;
-
-var ArrayObservable_1$1 = {
-    ArrayObservable: ArrayObservable_2
-};
-
-var __extends$9 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Subscriber_1$4 = Subscriber_1$2;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
-var OuterSubscriber = function (_super) {
-    __extends$9(OuterSubscriber, _super);
-    function OuterSubscriber() {
-        _super.apply(this, arguments);
-    }
-    OuterSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
-        this.destination.next(innerValue);
-    };
-    OuterSubscriber.prototype.notifyError = function (error, innerSub) {
-        this.destination.error(error);
-    };
-    OuterSubscriber.prototype.notifyComplete = function (innerSub) {
-        this.destination.complete();
-    };
-    return OuterSubscriber;
-}(Subscriber_1$4.Subscriber);
-var OuterSubscriber_2 = OuterSubscriber;
-
-var OuterSubscriber_1$1 = {
-    OuterSubscriber: OuterSubscriber_2
-};
-
-function isPromise(value) {
-  return value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
-}
-var isPromise_2 = isPromise;
-
-var isPromise_1$1 = {
-  isPromise: isPromise_2
-};
-
-var root_1$5 = root;
-function symbolIteratorPonyfill(root$$1) {
-    var _Symbol = root$$1.Symbol;
-    if (typeof _Symbol === 'function') {
-        if (!_Symbol.iterator) {
-            _Symbol.iterator = _Symbol('iterator polyfill');
-        }
-        return _Symbol.iterator;
-    } else {
-        // [for Mozilla Gecko 27-35:](https://mzl.la/2ewE1zC)
-        var Set_1 = root$$1.Set;
-        if (Set_1 && typeof new Set_1()['@@iterator'] === 'function') {
-            return '@@iterator';
-        }
-        var Map_1 = root$$1.Map;
-        // required for compatability with es6-shim
-        if (Map_1) {
-            var keys = Object.getOwnPropertyNames(Map_1.prototype);
-            for (var i = 0; i < keys.length; ++i) {
-                var key = keys[i];
-                // according to spec, Map.prototype[@@iterator] and Map.orototype.entries must be equal.
-                if (key !== 'entries' && key !== 'size' && Map_1.prototype[key] === Map_1.prototype['entries']) {
-                    return key;
-                }
-            }
-        }
-        return '@@iterator';
-    }
-}
-var symbolIteratorPonyfill_1 = symbolIteratorPonyfill;
-var $$iterator = symbolIteratorPonyfill(root_1$5.root);
-
-var iterator = {
-    symbolIteratorPonyfill: symbolIteratorPonyfill_1,
-    $$iterator: $$iterator
-};
-
-var __extends$10 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Subscriber_1$5 = Subscriber_1$2;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
-var InnerSubscriber = function (_super) {
-    __extends$10(InnerSubscriber, _super);
-    function InnerSubscriber(parent, outerValue, outerIndex) {
-        _super.call(this);
-        this.parent = parent;
-        this.outerValue = outerValue;
-        this.outerIndex = outerIndex;
-        this.index = 0;
-    }
-    InnerSubscriber.prototype._next = function (value) {
-        this.parent.notifyNext(this.outerValue, value, this.outerIndex, this.index++, this);
-    };
-    InnerSubscriber.prototype._error = function (error) {
-        this.parent.notifyError(error, this);
-        this.unsubscribe();
-    };
-    InnerSubscriber.prototype._complete = function () {
-        this.parent.notifyComplete(this);
-        this.unsubscribe();
-    };
-    return InnerSubscriber;
-}(Subscriber_1$5.Subscriber);
-var InnerSubscriber_2 = InnerSubscriber;
-
-var InnerSubscriber_1$1 = {
-    InnerSubscriber: InnerSubscriber_2
-};
-
-var root_1$4 = root;
-var isArray_1$2 = isArray;
-var isPromise_1 = isPromise_1$1;
-var isObject_1$3 = isObject_1$1;
-var Observable_1$7 = Observable_1$1;
-var iterator_1 = iterator;
-var InnerSubscriber_1 = InnerSubscriber_1$1;
-var observable_1$1 = observable;
-function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
-    var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
-    if (destination.closed) {
-        return null;
-    }
-    if (result instanceof Observable_1$7.Observable) {
-        if (result._isScalar) {
-            destination.next(result.value);
-            destination.complete();
-            return null;
-        } else {
-            return result.subscribe(destination);
-        }
-    } else if (isArray_1$2.isArray(result)) {
-        for (var i = 0, len = result.length; i < len && !destination.closed; i++) {
-            destination.next(result[i]);
-        }
-        if (!destination.closed) {
-            destination.complete();
-        }
-    } else if (isPromise_1.isPromise(result)) {
-        result.then(function (value) {
-            if (!destination.closed) {
-                destination.next(value);
-                destination.complete();
-            }
-        }, function (err) {
-            return destination.error(err);
-        }).then(null, function (err) {
-            // Escaping the Promise trap: globally throw unhandled errors
-            root_1$4.root.setTimeout(function () {
-                throw err;
-            });
-        });
-        return destination;
-    } else if (result && typeof result[iterator_1.$$iterator] === 'function') {
-        var iterator$$1 = result[iterator_1.$$iterator]();
-        do {
-            var item = iterator$$1.next();
-            if (item.done) {
-                destination.complete();
-                break;
-            }
-            destination.next(item.value);
-            if (destination.closed) {
-                break;
-            }
-        } while (true);
-    } else if (result && typeof result[observable_1$1.$$observable] === 'function') {
-        var obs = result[observable_1$1.$$observable]();
-        if (typeof obs.subscribe !== 'function') {
-            destination.error(new TypeError('Provided object does not correctly implement Symbol.observable'));
-        } else {
-            return obs.subscribe(new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex));
-        }
-    } else {
-        var value = isObject_1$3.isObject(result) ? 'an invalid object' : "'" + result + "'";
-        var msg = "You provided " + value + " where a stream was expected." + ' You can provide an Observable, Promise, Array, or Iterable.';
-        destination.error(new TypeError(msg));
-    }
-    return null;
-}
-var subscribeToResult_2 = subscribeToResult;
-
-var subscribeToResult_1$1 = {
-    subscribeToResult: subscribeToResult_2
-};
-
-var __extends$8 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var OuterSubscriber_1 = OuterSubscriber_1$1;
-var subscribeToResult_1 = subscribeToResult_1$1;
-/**
- * Converts a higher-order Observable into a first-order Observable which
- * concurrently delivers all values that are emitted on the inner Observables.
- *
- * <span class="informal">Flattens an Observable-of-Observables.</span>
- *
- * <img src="./img/mergeAll.png" width="100%">
- *
- * `mergeAll` subscribes to an Observable that emits Observables, also known as
- * a higher-order Observable. Each time it observes one of these emitted inner
- * Observables, it subscribes to that and delivers all the values from the
- * inner Observable on the output Observable. The output Observable only
- * completes once all inner Observables have completed. Any error delivered by
- * a inner Observable will be immediately emitted on the output Observable.
- *
- * @example <caption>Spawn a new interval Observable for each click event, and blend their outputs as one Observable</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
- * var firstOrder = higherOrder.mergeAll();
- * firstOrder.subscribe(x => console.log(x));
- *
- * @example <caption>Count from 0 to 9 every second for each click, but only allow 2 concurrent timers</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000).take(10));
- * var firstOrder = higherOrder.mergeAll(2);
- * firstOrder.subscribe(x => console.log(x));
- *
- * @see {@link combineAll}
- * @see {@link concatAll}
- * @see {@link exhaust}
- * @see {@link merge}
- * @see {@link mergeMap}
- * @see {@link mergeMapTo}
- * @see {@link mergeScan}
- * @see {@link switch}
- * @see {@link zipAll}
- *
- * @param {number} [concurrent=Number.POSITIVE_INFINITY] Maximum number of inner
- * Observables being subscribed to concurrently.
- * @return {Observable} An Observable that emits values coming from all the
- * inner Observables emitted by the source Observable.
- * @method mergeAll
- * @owner Observable
- */
-function mergeAll(concurrent) {
-    if (concurrent === void 0) {
-        concurrent = Number.POSITIVE_INFINITY;
-    }
-    return this.lift(new MergeAllOperator(concurrent));
-}
-var mergeAll_2 = mergeAll;
-var MergeAllOperator = function () {
-    function MergeAllOperator(concurrent) {
-        this.concurrent = concurrent;
-    }
-    MergeAllOperator.prototype.call = function (observer, source) {
-        return source._subscribe(new MergeAllSubscriber(observer, this.concurrent));
-    };
-    return MergeAllOperator;
-}();
-var MergeAllOperator_1 = MergeAllOperator;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
-var MergeAllSubscriber = function (_super) {
-    __extends$8(MergeAllSubscriber, _super);
-    function MergeAllSubscriber(destination, concurrent) {
-        _super.call(this, destination);
-        this.concurrent = concurrent;
-        this.hasCompleted = false;
-        this.buffer = [];
-        this.active = 0;
-    }
-    MergeAllSubscriber.prototype._next = function (observable) {
-        if (this.active < this.concurrent) {
-            this.active++;
-            this.add(subscribeToResult_1.subscribeToResult(this, observable));
-        } else {
-            this.buffer.push(observable);
-        }
-    };
-    MergeAllSubscriber.prototype._complete = function () {
-        this.hasCompleted = true;
-        if (this.active === 0 && this.buffer.length === 0) {
-            this.destination.complete();
-        }
-    };
-    MergeAllSubscriber.prototype.notifyComplete = function (innerSub) {
-        var buffer = this.buffer;
-        this.remove(innerSub);
-        this.active--;
-        if (buffer.length > 0) {
-            this._next(buffer.shift());
-        } else if (this.active === 0 && this.hasCompleted) {
-            this.destination.complete();
-        }
-    };
-    return MergeAllSubscriber;
-}(OuterSubscriber_1.OuterSubscriber);
-var MergeAllSubscriber_1 = MergeAllSubscriber;
-
-var mergeAll_1$1 = {
-    mergeAll: mergeAll_2,
-    MergeAllOperator: MergeAllOperator_1,
-    MergeAllSubscriber: MergeAllSubscriber_1
-};
-
-var isScheduler_1$4 = isScheduler_1$2;
-var ArrayObservable_1$3 = ArrayObservable_1$1;
-var mergeAll_1 = mergeAll_1$1;
-/* tslint:disable:max-line-length */
-/**
- * Creates an output Observable which sequentially emits all values from every
- * given input Observable after the current Observable.
- *
- * <span class="informal">Concatenates multiple Observables together by
- * sequentially emitting their values, one Observable after the other.</span>
- *
- * <img src="./img/concat.png" width="100%">
- *
- * Joins this Observable with multiple other Observables by subscribing to them
- * one at a time, starting with the source, and merging their results into the
- * output Observable. Will wait for each Observable to complete before moving
- * on to the next.
- *
- * @example <caption>Concatenate a timer counting from 0 to 3 with a synchronous sequence from 1 to 10</caption>
- * var timer = Rx.Observable.interval(1000).take(4);
- * var sequence = Rx.Observable.range(1, 10);
- * var result = timer.concat(sequence);
- * result.subscribe(x => console.log(x));
- *
- * @example <caption>Concatenate 3 Observables</caption>
- * var timer1 = Rx.Observable.interval(1000).take(10);
- * var timer2 = Rx.Observable.interval(2000).take(6);
- * var timer3 = Rx.Observable.interval(500).take(10);
- * var result = timer1.concat(timer2, timer3);
- * result.subscribe(x => console.log(x));
- *
- * @see {@link concatAll}
- * @see {@link concatMap}
- * @see {@link concatMapTo}
- *
- * @param {Observable} other An input Observable to concatenate after the source
- * Observable. More than one input Observables may be given as argument.
- * @param {Scheduler} [scheduler=null] An optional Scheduler to schedule each
- * Observable subscription on.
- * @return {Observable} All values of each passed Observable merged into a
- * single Observable, in order, in serial fashion.
- * @method concat
- * @owner Observable
- */
-function concat() {
-    var observables = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        observables[_i - 0] = arguments[_i];
-    }
-    return this.lift.call(concatStatic.apply(void 0, [this].concat(observables)));
-}
-var concat_2 = concat;
-/* tslint:enable:max-line-length */
-/**
- * Creates an output Observable which sequentially emits all values from every
- * given input Observable after the current Observable.
- *
- * <span class="informal">Concatenates multiple Observables together by
- * sequentially emitting their values, one Observable after the other.</span>
- *
- * <img src="./img/concat.png" width="100%">
- *
- * Joins multiple Observables together by subscribing to them one at a time and
- * merging their results into the output Observable. Will wait for each
- * Observable to complete before moving on to the next.
- *
- * @example <caption>Concatenate a timer counting from 0 to 3 with a synchronous sequence from 1 to 10</caption>
- * var timer = Rx.Observable.interval(1000).take(4);
- * var sequence = Rx.Observable.range(1, 10);
- * var result = Rx.Observable.concat(timer, sequence);
- * result.subscribe(x => console.log(x));
- *
- * @example <caption>Concatenate 3 Observables</caption>
- * var timer1 = Rx.Observable.interval(1000).take(10);
- * var timer2 = Rx.Observable.interval(2000).take(6);
- * var timer3 = Rx.Observable.interval(500).take(10);
- * var result = Rx.Observable.concat(timer1, timer2, timer3);
- * result.subscribe(x => console.log(x));
- *
- * @see {@link concatAll}
- * @see {@link concatMap}
- * @see {@link concatMapTo}
- *
- * @param {Observable} input1 An input Observable to concatenate with others.
- * @param {Observable} input2 An input Observable to concatenate with others.
- * More than one input Observables may be given as argument.
- * @param {Scheduler} [scheduler=null] An optional Scheduler to schedule each
- * Observable subscription on.
- * @return {Observable} All values of each passed Observable merged into a
- * single Observable, in order, in serial fashion.
- * @static true
- * @name concat
- * @owner Observable
- */
-function concatStatic() {
-    var observables = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        observables[_i - 0] = arguments[_i];
-    }
-    var scheduler = null;
-    var args = observables;
-    if (isScheduler_1$4.isScheduler(args[observables.length - 1])) {
-        scheduler = args.pop();
-    }
-    if (scheduler === null && observables.length === 1) {
-        return observables[0];
-    }
-    return new ArrayObservable_1$3.ArrayObservable(observables, scheduler).lift(new mergeAll_1.MergeAllOperator(1));
-}
-var concatStatic_1 = concatStatic;
-
-var concat_1$1 = {
-    concat: concat_2,
-    concatStatic: concatStatic_1
-};
-
-var ArrayObservable_1 = ArrayObservable_1$1;
-var ScalarObservable_1 = ScalarObservable_1$2;
-var EmptyObservable_1 = EmptyObservable_1$2;
-var concat_1 = concat_1$1;
-var isScheduler_1 = isScheduler_1$2;
-/* tslint:disable:max-line-length */
-/**
- * Returns an Observable that emits the items in a specified Iterable before it begins to emit items emitted by the
- * source Observable.
- *
- * <img src="./img/startWith.png" width="100%">
- *
- * @param {Values} an Iterable that contains the items you want the modified Observable to emit first.
- * @return {Observable} an Observable that emits the items in the specified Iterable and then emits the items
- * emitted by the source Observable.
- * @method startWith
- * @owner Observable
- */
-function startWith$2() {
-    var array = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        array[_i - 0] = arguments[_i];
-    }
-    var scheduler = array[array.length - 1];
-    if (isScheduler_1.isScheduler(scheduler)) {
-        array.pop();
-    } else {
-        scheduler = null;
-    }
-    var len = array.length;
-    if (len === 1) {
-        return concat_1.concatStatic(new ScalarObservable_1.ScalarObservable(array[0], scheduler), this);
-    } else if (len > 1) {
-        return concat_1.concatStatic(new ArrayObservable_1.ArrayObservable(array, scheduler), this);
-    } else {
-        return concat_1.concatStatic(new EmptyObservable_1.EmptyObservable(scheduler), this);
-    }
-}
-var startWith_2 = startWith$2;
-
-var startWith_1$1 = {
-    startWith: startWith_2
-};
-
-var Observable_1$3 = Observable_1$1;
-var startWith_1 = startWith_1$1;
-Observable_1$3.Observable.prototype.startWith = startWith_1.startWith;
-
-var __extends$11 = commonjsGlobal && commonjsGlobal.__extends || function (d, b) {
-    for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-    }function __() {
-        this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Subscriber_1$6 = Subscriber_1$2;
-/* tslint:disable:max-line-length */
-/**
- * Applies an accumulator function over the source Observable, and returns each
- * intermediate result, with an optional seed value.
- *
- * <span class="informal">It's like {@link reduce}, but emits the current
- * accumulation whenever the source emits a value.</span>
- *
- * <img src="./img/scan.png" width="100%">
- *
- * Combines together all values emitted on the source, using an accumulator
- * function that knows how to join a new source value into the accumulation from
- * the past. Is similar to {@link reduce}, but emits the intermediate
- * accumulations.
- *
- * Returns an Observable that applies a specified `accumulator` function to each
- * item emitted by the source Observable. If a `seed` value is specified, then
- * that value will be used as the initial value for the accumulator. If no seed
- * value is specified, the first item of the source is used as the seed.
- *
- * @example <caption>Count the number of click events</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var ones = clicks.mapTo(1);
- * var seed = 0;
- * var count = ones.scan((acc, one) => acc + one, seed);
- * count.subscribe(x => console.log(x));
- *
- * @see {@link expand}
- * @see {@link mergeScan}
- * @see {@link reduce}
- *
- * @param {function(acc: R, value: T, index: number): R} accumulator
- * The accumulator function called on each source value.
- * @param {T|R} [seed] The initial accumulation value.
- * @return {Observable<R>} An observable of the accumulated values.
- * @method scan
- * @owner Observable
- */
-function scan$2(accumulator, seed) {
-    var hasSeed = false;
-    // providing a seed of `undefined` *should* be valid and trigger
-    // hasSeed! so don't use `seed !== undefined` checks!
-    // For this reason, we have to check it here at the original call site
-    // otherwise inside Operator/Subscriber we won't know if `undefined`
-    // means they didn't provide anything or if they literally provided `undefined`
-    if (arguments.length >= 2) {
-        hasSeed = true;
-    }
-    return this.lift(new ScanOperator(accumulator, seed, hasSeed));
-}
-var scan_2 = scan$2;
-var ScanOperator = function () {
-    function ScanOperator(accumulator, seed, hasSeed) {
-        if (hasSeed === void 0) {
-            hasSeed = false;
-        }
-        this.accumulator = accumulator;
-        this.seed = seed;
-        this.hasSeed = hasSeed;
-    }
-    ScanOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new ScanSubscriber(subscriber, this.accumulator, this.seed, this.hasSeed));
-    };
-    return ScanOperator;
-}();
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
-var ScanSubscriber = function (_super) {
-    __extends$11(ScanSubscriber, _super);
-    function ScanSubscriber(destination, accumulator, _seed, hasSeed) {
-        _super.call(this, destination);
-        this.accumulator = accumulator;
-        this._seed = _seed;
-        this.hasSeed = hasSeed;
-        this.index = 0;
-    }
-    Object.defineProperty(ScanSubscriber.prototype, "seed", {
+    Object.defineProperty(BehaviorSubject.prototype, "value", {
         get: function get() {
-            return this._seed;
-        },
-        set: function set(value) {
-            this.hasSeed = true;
-            this._seed = value;
+            return this.getValue();
         },
         enumerable: true,
         configurable: true
     });
-    ScanSubscriber.prototype._next = function (value) {
-        if (!this.hasSeed) {
-            this.seed = value;
-            this.destination.next(value);
+    BehaviorSubject.prototype._subscribe = function (subscriber) {
+        var subscription = _super.prototype._subscribe.call(this, subscriber);
+        if (subscription && !subscription.closed) {
+            subscriber.next(this._value);
+        }
+        return subscription;
+    };
+    BehaviorSubject.prototype.getValue = function () {
+        if (this.hasError) {
+            throw this.thrownError;
+        } else if (this.closed) {
+            throw new ObjectUnsubscribedError_1.ObjectUnsubscribedError();
         } else {
-            return this._tryNext(value);
+            return this._value;
         }
     };
-    ScanSubscriber.prototype._tryNext = function (value) {
-        var index = this.index++;
-        var result;
-        try {
-            result = this.accumulator(this.seed, value, index);
-        } catch (err) {
-            this.destination.error(err);
-        }
-        this.seed = result;
-        this.destination.next(result);
+    BehaviorSubject.prototype.next = function (value) {
+        _super.prototype.next.call(this, this._value = value);
     };
-    return ScanSubscriber;
-}(Subscriber_1$6.Subscriber);
-
-var scan_1$1 = {
-    scan: scan_2
-};
-
-var Observable_1$8 = Observable_1$1;
-var scan_1 = scan_1$1;
-Observable_1$8.Observable.prototype.scan = scan_1.scan;
+    return BehaviorSubject;
+}(Subject_1.Subject);
+var BehaviorSubject_2 = BehaviorSubject;
 
 function createRxStore(reducer, initialState) {
-  var action$ = new Subject_2();
-  var state$ = action$.startWith(initialState).scan(reducer);
+  var state$ = new BehaviorSubject_2(initialState);
   return {
-    action$: action$,
     state$: state$,
     dispatch: function dispatch(action) {
-      return action$.next(action);
+      return state$.next(reducer(state$.value, action));
     },
     subscribe: function subscribe() {
       return state$.subscribe.apply(state$, arguments);
