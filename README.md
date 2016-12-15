@@ -62,18 +62,12 @@ store.state$.subscribe(function(state) {
 ### Modify State
 
 ```js
-store.subscribe(function(state) {
-  console.log('State: ' + state);
-});
-
 var action = 4;
 store.dispatch(action);
 
-// which is equivalent to
-
-store.action$.next(action);
-
-// logs:
+store.subscribe(function(state) {
+  console.log('State: ' + state);
+});
 // State: 0
 // State: 4
 ```
@@ -88,14 +82,6 @@ var addTwo$ = Rx.Observable.fromEvent(btnNode, 'click').map(e => {
 // send each new action to the store
 addTwo$.subscribe(function(action) {
   store.dispatch(action);
-});
-```
-
-### Subscribe to Actions
-
-```js
-store.action$.subscribe(function(action) {
-  // do stuff with action
 });
 ```
 
@@ -124,15 +110,14 @@ function add(data) {
   };
 }
 
-store.subscribe(function(data) {
-  console.log(data);
-});
-
 var addAction = add(4);
 var addAction2 = add(-1);
 store.dispatch(addAction);
 store.dispatch(addAction2);
-// logs:
+
+store.subscribe(function(data) {
+  console.log(data);
+});
 // {count: 0, somethingElse: 'data'}
 // {count: 4, somethingElse: 'data');
 // {count: 3, somethingElse: 'data');
