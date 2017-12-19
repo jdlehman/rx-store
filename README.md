@@ -4,6 +4,8 @@
 
 # rx-store
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jdlehman/rx-store.svg)](https://greenkeeper.io/)
+
 `rx-store` is a reactive solution for managing state. It is framework and view agnostic, though it can be used as the basis for a Flux pattern.
 
 ## Installation
